@@ -14,13 +14,17 @@ At first, there is generally one coordinator per navigation controller. Pushed v
 
 As the application complexity increases, coordinators handle more and more logic, mostly when screens are accessible from different places. This leads to coordinators implementing a lot of navigation delegation protocols (schema 1).
 
-![schema_1](https://www.fabernovel.com/content/uploads/2017/09/Coordinator.png "Schema 1. One coordinator handle multiple logically related units"){: .center-image }
-*Schema 1. One coordinator handle multiple logically related units*
+{% include image.html
+            img="assets/coordinator-image1.png"
+            title="Schema 1. One coordinator handle multiple logically related units"
+            caption="Schema 1. One coordinator handle multiple logically related units" %}
 
 When a coordinator handle too many view controllers in a navigation controller, it’s a good idea to refactor and to break the logic in multiple coordinators, each one handling a subset of the navigation controller stack. All those new coordinators are dispatched one after the other and share the same navigationController, each of them taking care of a distinct logic unit (schema 2).
 
-![schema_2](https://www.fabernovel.com/content/uploads/2017/09/CoordinatorRefactor.png "Schema 2. Multiple coordinators handle logically related units"){: .center-image }
-*Schema 2. Multiple coordinators handle logically related units*
+{% include image.html
+            img="assets/coordinator-image2.png"
+            title="Schema 2. Multiple coordinators handle logically related units"
+            caption="Schema 2. Multiple coordinators handle logically related units" %}
 
 As stated in [this article](http://khanlou.com/2017/05/back-buttons-and-coordinators/), this leads to issues when the user taps the back button because the action is handled by the system and the back button was not created in our code. It’s then difficult to track which coordinator should be alive and to proceed to our regular bookkeeping. In the same article, Soroush Khanlou provides some interesting solutions about this problem, that we will challenge before proposing another solution that better suits our needs.
 
@@ -267,8 +271,10 @@ All our work has been done to have a chance to call `removeChild(coordinator)` a
 
 Here is a visual representation of the different objects in play:
 
-![schema_3](https://www.fabernovel.com/content/uploads/2017/09/NavigationObserver.png "Schema 3. Object interactions"){: .center-image }
-*Schema 3. Object interactions*
+{% include image.html
+            img="assets/coordinator-image3.png"
+            title="Schema 3. Object interactions"
+            caption="Schema 3. Object interactions" %}
 
 Our solution is not a perfect one, but we take a slightly different approach from the two other solutions that were proposed in the Soroush’s [article](http://khanlou.com/2017/05/back-buttons-and-coordinators/). We hope these series of articles will help people use Coordinators, because it’s a great tool to extract navigation logic out of view controllers. You can find the full gist [here](https://gist.github.com/felginep/370131d12a5ced76accd109e731e6d76).
 

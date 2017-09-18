@@ -24,9 +24,10 @@ In this post we will focus on visual disability and on two accessibility feature
 
 You can choose your preferred text size in _Settings_ > _General_ > _Accessibility_ > _Larger Text_.
 
-
-![different_font_sizes](https://www.fabernovel.com/content/uploads/2017/04/image10.png "Example of different font sizes"){: .center-image }
-*Example of different font sizes*
+{% include image.html
+            img="assets/accessibility-image1.png"
+            title="Example of different font sizes"
+            caption="Example of different font sizes" %}
 
 When you change the slider value, the system and all the applications that support _Dynamic Type_ will update their font sizes.
 
@@ -188,13 +189,17 @@ The system will now read the `accessibilityLabel` we set for the label, which is
 
 Let’s imagine you display a stepper, to update the value of a counter. The UI looks like this:
 
-![sample_stepper](https://www.fabernovel.com/content/uploads/2017/04/image07.png "Sample Stepper"){: .center-image }
-*Sample Stepper*
+{% include image.html
+            img="assets/accessibility-image2.png"
+            title="Sample Stepper"
+            caption="Sample Stepper" %}
 
 If we let the default accessibility values, here what happens: the focus will go to the minus button, then the plus button, and finally to the count label.
 
-![focus_when_default](https://www.fabernovel.com/content/uploads/2017/04/image06.png "Focus when default"){: .center-image }
-*Focus when default*
+{% include image.html
+            img="assets/accessibility-image3.png"
+            title="Focus when default"
+            caption="Focus when default" %}
 
 Here what is said by _VoiceOver_ when we play these actions:
 
@@ -211,8 +216,10 @@ As seen before, traits describe a single aspect of an element’s state, behavio
 
 > Use this trait to characterize an accessibility element that users can adjust in a continuous manner, such as a slider or a picker view. If you specify this trait on an accessibility element, you must also implement the `accessibilityIncrement()` and `accessibilityDecrement()` methods in the `UIAccessibilityAction` protocol.
 
-![stepper_in_wrappper_view](https://www.fabernovel.com/content/uploads/2017/04/image01.png "Stepper in wrapper view"){: .center-image }
-*Stepper in wrapper view*
+{% include image.html
+            img="assets/accessibility-image4.png"
+            title="Stepper in wrapper view"
+            caption="Stepper in wrapper view" %}
 
 Here is the result after the update:
 
@@ -304,8 +311,10 @@ In the code above you can see we update the `wrapperView.accessibilityValue` eve
 
 You can display the rotor if you hold with two fingers and twist left or right.
 
-![rotor_in_voiceover](https://www.fabernovel.com/content/uploads/2017/04/image02.png "Rotor in VoiceOver"){: .center-image }
-*Rotor in VoiceOver*
+{% include image.html
+            img="assets/accessibility-image5.png"
+            title="Rotor in VoiceOver"
+            caption="Rotor in VoiceOver" %}
 
 The rotor display several actions or movements that can be performed:
 
@@ -324,8 +333,10 @@ For example if you select the value Headings, you will move from UI elements tha
 
 In the example below, if the focus is on the first header _Header 1_ and that _Headings_ is selected in the rotor, when you flick your finger down, the focus will move to the second header _Header 2_ skipping all the content between.
 
-![rotor_header](https://www.fabernovel.com/content/uploads/2017/04/HeadingRotor.png "Scroll down to move from first header to second"){: .center-image }
-*Scroll down to move from first header to second*
+{% include image.html
+            img="assets/accessibility-image6.png"
+            title="Scroll down to move from first header to second"
+            caption="Scroll down to move from first header to second" %}
 
 This feature allows _VoiceOver_ users to save time, scanning only the relevant content. This is why you need to carefully choose the traits for each UI element.
 
@@ -371,15 +382,19 @@ You can test if VoiceOver is running with two methods:
 You should use those methods to update your UI if _VoiceOver_ is activated or not.
 For example let’s imagine you have a dropdown button and you want to display a picker as the inputView when you tap on it (see image below).
 
-![dropdown_default_behavior](https://www.fabernovel.com/content/uploads/2017/04/DropdownDefault.png "Default behavior when dropdown button is selected"){: .center-image }
-*Default behavior when dropdown button is selected*
+{% include image.html
+            img="assets/accessibility-image7.png"
+            title="Default behavior when dropdown button is selected"
+            caption="Default behavior when dropdown button is selected" %}
 
 One solution would be to let the user select a value in the picker both with and without _VoiceOver_. But using a `UIPickerView` with _VoiceOver_ is a total pain.
 
 A better solution would be to let the user select a value in the picker if _VoiceOver_ is not activated, like regular users. But if _VoiceOver_ is running, we could leverage the `UIAccessiblityTraitAdjustable` trait to avoid displaying the picker view and let the user change the value swiping up or down.
 
-![dropdown_voice_over_behavior](https://www.fabernovel.com/content/uploads/2017/04/DropdownVoiceOver.png "VoiceOver behavior"){: .center-image }
-*VoiceOver behavior*
+{% include image.html
+            img="assets/accessibility-image8.png"
+            title="VoiceOver behavior"
+            caption="VoiceOver behavior" %}
 
 ## Final note
 

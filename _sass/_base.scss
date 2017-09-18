@@ -19,6 +19,26 @@ html {
   }
 }
 
+.image-wrapper {
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  .image-caption {
+    color: $grey-1;
+    text-align: center;
+    font-size: 12px;
+    margin: 8px;
+
+    @media (min-width: 600px) {
+      font-size: 14px;
+      margin: 12px;
+    }
+  }
+}
+
 body {
   -webkit-text-size-adjust: 100%;
 }
