@@ -3,6 +3,7 @@ permalink:      /:year-:month-:day/:title
 
 # Setup
 title:          Pierre Felgines
+description:    A blog dedicated to iOS development.
 paginate:       10
 baseurl:        ""
 url:            "https://felginep.github.io"
@@ -18,6 +19,7 @@ markdown:       kramdown
 # About
 author:
   name:         Pierre Felgines
+  twitter:      PierreFelgines
   url:          http://github.com/felginep
   email:        ""
 
@@ -31,3 +33,4 @@ plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
