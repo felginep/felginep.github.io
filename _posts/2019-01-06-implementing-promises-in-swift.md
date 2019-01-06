@@ -29,7 +29,7 @@ In this test we want to implement that the function passed to the initializer of
 
 When we run the playground, the compiler raises a first error:
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:41:9: error: use of unresolved identifier 'Promise'
     _ = Promise { string = "foo" }
         ^~~~~~~
@@ -45,7 +45,7 @@ class Promise {
 
 The error now becomes:
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:44:17: error: argument passed to call that takes no arguments
     _ = Promise { string = "foo" }
                 ^~~~~~~~~~~~~~~~~~
@@ -117,7 +117,7 @@ The method `then` can be called anytime, whatever the internal state of the prom
 
 Now that we understand a little better what we have to implement, let's start by fixing the compiler issues.
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:54:19: error: cannot specialize non-generic type 'Promise'
     let promise = Promise<String> { resolve in
                   ^      ~~~~~~~~
@@ -136,7 +136,7 @@ class Promise<Value> {
 
 Now the error becomes:
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:54:37: error: contextual closure type '() -> Void' expects 0 arguments, but 1 was used in closure body
     let promise = Promise<String> { resolve in
                                     ^
@@ -175,7 +175,7 @@ We will implement `resolve` in a moment, when all the errors will be taken care 
 
 The next one is simple, the method `then` is not defined yet.
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:61:5: error: value of type 'Promise<String>' has no member 'then'
     promise.then { (value: String) in
     ^~~~~~~ ~~~~
@@ -447,7 +447,7 @@ We can see here that the first `then` creates a new `Promise` with a whole new v
 
 This immediately raises an error in the console.
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:143:10: error: value of tuple type '()' has no member 'then'
         .then { value in
          ^
@@ -557,7 +557,7 @@ Note here that the first `then` that is used does not return a `Promise` anymore
 
 The compiler emits an error saying we have to implement this method.
 
-{% highlight swift %}
+{% highlight bash %}
 error: Promise.playground:174:26: error: declared closure result 'String' is incompatible with contextual type 'Void'
         .then { value -> String in
                          ^~~~~~
