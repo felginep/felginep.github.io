@@ -3,7 +3,11 @@
 	{% if include.url %}
 	<a href="{{ include.url }}" title="" target="_blank">
 	{% endif %}
+	{% if include.max-width %}
+	<img src="{{ site.url }}/{{ include.img }}" alt="{{ include.title }}" style="max-width: {{ include.max-width }};" />
+	{% else %}
 	<img src="{{ site.url }}/{{ include.img }}" alt="{{ include.title }}" />
+	{% endif %}
 	{% if include.url %}
 	</a>
 	{% endif %}
