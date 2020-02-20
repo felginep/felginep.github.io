@@ -7,7 +7,7 @@ permalink: /about/
 
 Hi, I'm Pierre.
 
-I'm a senior iOS developer at [Applidium](https://applidium.com/).
+I'm a senior iOS developer at [Fabernovel](https://www.fabernovel.com/fr), formely Applidium.
 
 You can contact me on the following networks:
 
