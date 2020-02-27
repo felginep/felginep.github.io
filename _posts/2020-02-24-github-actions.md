@@ -18,7 +18,6 @@ Once it's done, the first thing to do is to create a `Gemfile` in the `Example` 
 
 {% highlight ruby %}
 source 'https://rubygems.org'
-ruby '2.6.5'
 
 gem 'fastlane', '<3.0'
 gem 'cocoapods', '1.8.4'
