@@ -397,7 +397,7 @@ class InitialsViewController: UIViewController {
 
 # Conclusion
 
-Many times, we use an assertion (like `preconditionFailure` or `assert`) to stop the program execution if a path should not happen. But assertions are not the best tool because they are very fragile. Indeed they raise an runtime error instead of a compilation error. It's very easy to duplicate code and to introduce bugs.
+Many times, we use an assertion (like `preconditionFailure` or `assert`) to stop the program execution if a path should not happen. But assertions are not the best tool because they are very fragile. Indeed they raise a runtime error instead of a compilation error. It's very easy to duplicate code and to introduce bugs.
 
 To avoid misusing assertions, we saw in this article different solutions:
 - create a type that match your requirements and enforce the constraints (`NonEmpty`, `Initials`)
