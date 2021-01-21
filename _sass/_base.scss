@@ -54,6 +54,39 @@ h6 {
   line-height: normal;
 }
 
+/**
+ * Tables
+ */
+
+ $table-text-color:      $default-shade;
+ $table-zebra-color:     $grey-3;
+ $table-header-bg-color: $grey-2;
+ $table-border-color:    $grey-1;
+
+ table {
+   margin: 30px auto;
+   text-align: left;
+   color: $table-text-color;
+   border-collapse: collapse;
+   border: 1px solid $table-border-color;
+   tr {
+     &:nth-child(even) {
+       background-color: $table-zebra-color;
+     }
+   }
+   th, td {
+     padding: 10px 15px;
+   }
+   th {
+     background-color: $table-header-bg-color;
+     border: 1px solid $table-border-color;
+   }
+   td {
+     border: 1px solid $table-border-color;
+   }
+ }
+
+
 a {
   color: $blue;
   text-decoration: none;
