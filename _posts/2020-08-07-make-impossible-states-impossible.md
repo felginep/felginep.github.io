@@ -6,7 +6,7 @@ author: "Pierre Felgines"
 
 Swift is a strongly typed language and in this article I want to focus on how to strengthen some part of our code using Swift types.
 
-# Optionals
+## Optionals
 
 Optionals are a powerful tool, but they quickly become a pain in one particular case: when the value of the object is set in a distant future and most of the logic relies on this value.
 
@@ -119,7 +119,7 @@ class ArticleViewController: UIViewController {
 
 Note that this technique is not reserved for view controllers, it can be applied everywhere. When you see that `preconditionFailure` start to be scattered all over the place, there is a need for refactoring.
 
-# NonEmpty
+## NonEmpty
 
 Let's say we are in an app that has some sort of `Project` entity. A project contains some *products*, and a project cannot live without products (it has at least one product).
 
@@ -257,7 +257,7 @@ Note that this time the `currentProduct` instance is still not an optional but w
 
 Creating your own types is really powerful and is often another way to remove `preconditionFailure` in your code. But sometimes it is not always possible to define such types.
 
-# Enums
+## Enums
 
 Let's face it, code is rarely bad from the start. The issue is that it grows incrementally and is often changed by multiple developers.
 
@@ -312,7 +312,7 @@ With this change, only 3 states are possible:
 
 We removed 3 states from the possible outputs. It is now impossible to be loading while a result exists and vice versa.
 
-# Pushing responsibility away
+## Pushing responsibility away
 
 When designing an API you should also consider what types you expect. Let's say you have an application that takes the initials of an user, and creates some fancy images with the initials (for instance a placeholder profile picture for the user). For simplicity, let's assume the initials are always composed of two letters.
 
@@ -395,7 +395,7 @@ class InitialsViewController: UIViewController {
 }
 {% endhighlight %}
 
-# Conclusion
+## Conclusion
 
 Many times, we use an assertion (like `preconditionFailure` or `assert`) to stop the program execution if a path should not happen. But assertions are not the best tool because they are very fragile. Indeed they raise a runtime error instead of a compilation error. It's very easy to duplicate code and to introduce bugs.
 

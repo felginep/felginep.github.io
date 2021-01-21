@@ -8,16 +8,16 @@ As Covid-19 started to spread, we tried to find a way to help as developers, wit
 
 That's a good opportunity to focus on visit monitoring here and see if it's a good candidate for this use case.
 
-# The service
+## The service
 
-## Setup
+### Setup
 
 Visit monitoring requires the `Always` authorization for location. The service is not available when `When In Use` is requested. You can find all the location services and their needed authorizations [here](https://developer.apple.com/documentation/corelocation/choosing_the_location_services_authorization_to_request#3376460).
 
 Visit monitoring is meant to be used in background. Like the other background services, it will continue to run even when the app is suspended, and will [launch](https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/handling_location_events_in_the_background#2865362) the app in the background to deliver events.
 Make sure to enable `Location Updates` in the application background modes capabilities and to set `allowsBackgroundLocationUpdates` to `true` for the location manager.
 
-## Start monitoring visits
+### Start monitoring visits
 
 The use is really straightforward, as for other location services.
 
@@ -80,7 +80,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 }
 {% endhighlight %}
 
-## Debuging
+### Debuging
 
 The service runs in background and you have no idea when the system will choose to trigger a visit update. That's why it's difficult to debug it.
 
@@ -110,15 +110,15 @@ private func postDebugMessage(for visit: CLVisit) {
 }
 {% endhighlight %}
 
-# Pros and cons
+## Pros and cons
 
-## Pros
+### Pros
 
 - The major feature of visit monitoring is to be able to receive user locations with a very minimal impact on battery life. Apple even describes this service as _the most power-efficient way of gathering location data_. The goal here is not to be very accurate about the user trace, but to be able to retrieve context from a user location.
 
 - Apple uses sophisticated algorithms to monitor for places that the user might consider a noteworthy part of their day. For instance the property `pausesLocationUpdatesAutomatically` automatically pauses the service if the user is unlikely to move. That means the framework learns from your habits and trigger events accordingly.
 
-## Cons
+### Cons
 
 - Some visits returned by the system are incomplete and the documentation is misleading. The documentation states that _Visit objects contain as much information about the visit as possible but may not always include both the arrival and departure times_.
 
@@ -144,7 +144,7 @@ That means you can't trust the visit dates and have to discard invalid visits if
 
 - Another issue about precision is that you can't know the elevation of the user. That means you may have a single event when the user visits a building, although he may have been in very different levels for different purposes.
 
-# Conclusion
+## Conclusion
 
 Visit monitoring is a powerful service that should be considered as an alternative to Significant-change monitoring in some cases. Its minimal impact on battery life makes it perfect to use in situations where you just need to get context from a noteworthy place: restaurant, gym, home, work, etc.
 

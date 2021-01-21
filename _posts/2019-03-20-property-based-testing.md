@@ -8,7 +8,7 @@ You will always hear that writing tests is a good thing. But are you 100% sure a
 Property based testing let you generate your tests instead of writing them.
 Let's see what this is, how to use it, and how we can leverage it to write robust UI tests.
 
-# Basic test
+## Basic test
 
 Let's say for the sake of the demonstration that we want to implement a sort algorithm in our application.
 
@@ -42,7 +42,7 @@ XCTAssertEqual([].quickSort(), [])
 
 Attentive readers may have spotted that our code is buggy, but our tests pass anyway. How could we test it better to find the bug?
 
-# Property based testing
+## Property based testing
 
 We wrote some tests, that's a very good thing, but our test suite is really minimal. In a perfect world, we would like to test the `quickSort()` function for every array of integers.
 
@@ -107,7 +107,7 @@ print(String.shrink("test"))
 "tesb", "tesc", "tesC", "tesa", "tes1", "tes\n", "tesA", "tesB", "tes3"]
 {% endhighlight %}
 
-# Back to the example
+## Back to the example
 
 Now that we understand how to implement a property based test, let's do it for the `quickSort()` function we defined earlier.
 
@@ -173,7 +173,7 @@ This time the result is correct, all the 100 tests pass.
 .
 {% endhighlight %}
 
-# When to use property based testing?
+## When to use property based testing?
 
 The advantages of property based testing are:
 - they are more general and can replace many example based tests
@@ -214,7 +214,7 @@ property("Test Chunk") <- forAll(arrayGen, sizeGen) { (integers: [Int], size: In
 }
 {% endhighlight %}
 
-# What about UI tests?
+## What about UI tests?
 
 As we mainly write code that is related to UI, how could we leverage property based testing to test our layouts? For instance, it's very common to forget activating an `NSLayoutConstraint`, or to provide the wrong `constant` value, and this results in layout issues. And sometimes these issues do not appear during the development phase, but later, in production with real data.
 
@@ -290,7 +290,7 @@ property("Layout") <- forAll { (viewModel: ViewModel) in
 
 The implementation of the methods `hasNoAutoLayoutIssues` and `hasNoFrameOverlap` is left as an exercise to the reader, but some time ago, LinkedIn created a [library](https://github.com/linkedin/LayoutTest-iOS) heavily inspired by this approach (even so they do not provide real random values). You can find the implementations on the repository.
 
-# Conclusion
+## Conclusion
 
 We have seen how powerful property based testing is. Instead of writing one or two example based tests per feature, it allows you to generate thousands of random tests very easily.
 

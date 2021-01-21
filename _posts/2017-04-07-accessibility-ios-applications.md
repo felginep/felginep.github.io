@@ -20,7 +20,7 @@ From the beginning of iOS, Apple has been providing several features for accessi
 
 In this post we will focus on visual disability and on two accessibility features: **Dynamic Type** and **VoiceOver**. We will detail those features and present some pitfalls we ran into.
 
-# Dynamic Type
+## Dynamic Type
 
 You can choose your preferred text size in _Settings_ > _General_ > _Accessibility_ > _Larger Text_.
 
@@ -135,12 +135,12 @@ extension UIFont {
 
 _Dynamic Type_ is very simple to integrate to your code base and should simplify the way designers think about typography. Indeed, we are not reasoning about font family and size anymore, but in terms of font style hierarchy (`.body` , `.headline`, …).
 
-# VoiceOver
+## VoiceOver
 
 Another important accessibility feature is _VoiceOver_. _VoiceOver_ is an Apple feature that reads the screen to the user, providing audible descriptions of the elements and actions in the application.
 The challenge with _VoiceOver_ is to provide meaningful content, i.e accurate and helpful informations about elements on screen: position, description, behaviour, value and type.
 
-## Accessibility is UI
+### Accessibility is UI
 
 Before you start thinking about _VoiceOver_, you should learn all the gestures and shortcuts that are available. Indeed, there are at least 5 gestures for each set of fingers (from 1 to 4), which translate to plenty of [combinations](http://axslab.com/articles/ios-voiceover-gestures-and-keyboard-commands.php).
 
@@ -160,7 +160,7 @@ You should think about accessibility labels, hints and traits as any regular con
 
 In some simple cases, the default implementation of _VoiceOver_ is enough but there are edges cases that need custom behavior. Let’s see some of them.
 
-## Read numbers
+### Read numbers
 
 In our applications, we sometimes have to present numerical values to the user. For instance, imagine we display the population of a city, let’s say _520215_.
 
@@ -185,7 +185,7 @@ The system will now read the `accessibilityLabel` we set for the label, which is
 
 > five hundred twenty thousand two hundred fifteen
 
-## Adjust values
+### Adjust values
 
 Let’s imagine you display a stepper, to update the value of a counter. The UI looks like this:
 
@@ -307,7 +307,7 @@ class ViewController: UIViewController, AccessibilityAdjustableContainerViewDele
 
 In the code above you can see we update the `wrapperView.accessibilityValue` every time the label is updated. This is because the system will read this value only when it changes.
 
-## The rotor
+### The rotor
 
 You can display the rotor if you hold with two fingers and twist left or right.
 
@@ -361,7 +361,7 @@ po [navigationBar accessibilityTraits] => 0x0000200000000000
 
 If you want to separate your UI in multiple logical sections, you’ll have to fallback using `UIAccessibilityTraitHeader` instead.
 
-## Notifications
+### Notifications
 
 When elements change on the screen and you want to keep the user up to date with the new visual content, you have to notify _VoiceOver_ through notifications.
 
@@ -372,7 +372,7 @@ We had to use this feature when we wanted to tell _VoiceOver_ to focus on a part
 We tried using both `UIAccessibilityScreenChangedNotification` and `UIAccessibilityLayoutChangedNotification` to force _VoiceOver_ to select an element. But we found that notifications have non consistent behaviour.
 Sometimes both notifications did the trick, sometimes only one of them. _VoiceOver_ is a black box and we don’t know exactly how it selects the elements on the screen. That’s why trying to force the system is not working every time.
 
-## Reacting to VoiceOver
+### Reacting to VoiceOver
 
 You can test if VoiceOver is running with two methods:
 

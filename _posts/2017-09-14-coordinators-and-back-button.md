@@ -8,7 +8,7 @@ This article was first published on Fabernovel [blog](https://en.fabernovel.com/
 
 To build modulable and easily maintainable iOS applications, we decided to use, at Applidium, a custom iOS architecture, adapted from the Uncle Bob’s [clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html). One of the biggest challenge, in that process, was to separate the view, business and navigation logics from view controllers. The view and the business logics are isolated and decoupled from the view controllers thanks to view contracts, presenters, interactors and repositories, mostly. The navigation part is done through [Coordinators](http://khanlou.com/2015/01/the-coordinator/). Coordinators take care of presenting and dismissing view controllers, handle the application workflow and are organized in a tree hierarchy standing in parallel to the view controller’s one.
 
-# Coordinators grow with the application
+## Coordinators grow with the application
 
 At first, there is generally one coordinator per navigation controller. Pushed view controllers are handled by the same coordinator, while modally presented ones live in a new navigation controller supervised by a child coordinator. The parent coordinator is in charge to present and dismiss this new navigation controller.
 
@@ -28,7 +28,7 @@ When a coordinator handle too many view controllers in a navigation controller, 
 
 As stated in [this article](http://khanlou.com/2017/05/back-buttons-and-coordinators/), this leads to issues when the user taps the back button because the action is handled by the system and the back button was not created in our code. It’s then difficult to track which coordinator should be alive and to proceed to our regular bookkeeping. In the same article, Soroush Khanlou provides some interesting solutions about this problem, that we will challenge before proposing another solution that better suits our needs.
 
-# Available solutions
+## Available solutions
 
 [Bryan Irace’s](http://irace.me/navigation-coordinators) solution, that Soroush is presenting, uses a custom view controller containing and handling the navigation controller. Having another container view controller increases both the view controller and the view hierarchies. This also prevents the navigation controller pop gesture recognizer from working properly, requiring to use its delegate to put it back on track.
 
@@ -42,7 +42,7 @@ To avoid that tradeoff, Soroush decided to move the navigation controller delega
 
 This is why we decided to work on our proposition to deal with those issues. The idea was to build a mechanism easily and optionally usable that is as invisible as possible from the outside of the “I need to stack coordinators for a single navigation controller” scope.
 
-# Our solution
+## Our solution
 
 To sum up, here are our requirements:
 
@@ -178,7 +178,7 @@ That’s all it takes to register multiple delegates, each per view controller. 
 - track which view controller has been popped from navigation controller. This is done through the use of the `UINavigationControllerDelegate` methods.
 - be able to change the view controller stack in the different coordinators. Indeed the parent coordinator can change the stack it owns with no consequences. Each time the detail coordinator changes the first view controller of the navigation controller’s stack, it also needs to observe the new controller pop transition by calling `observePopTransition(of:delegate)`.
 
-# Objective-C to the rescue
+## Objective-C to the rescue
 
 The last requirement we got, was to allow the use of custom transitions for push or pop operations. These custom transitions are handled by the navigation controller delegate, that is already in use in the `NavigationControllerObserver`.
 
@@ -238,7 +238,7 @@ public class NavigationControllerObserver : NSObject, UINavigationControllerDele
 
 We can argue that using Objective-C dynamic features is not the right solution. For our needs it works pretty well because it stays hidden in this particular object, and allows the outside world to provide navigation controller delegate method implementations.
 
-# What did we accomplish ?
+## What did we accomplish ?
 
 Finally, let’s see the code in the `MasterCoordinator` that creates the `DetailCoordinator`.
 

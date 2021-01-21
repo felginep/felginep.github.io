@@ -8,7 +8,7 @@ I always found the `UIAlertController` API too verbose. You first have to create
 
 In this post, I will show you how we can leverage the new Swift 5.1 feature of *Function Builders* to create a simplified and highly readable API.
 
-# Our goal
+## Our goal
 
 Let's take this sample code:
 
@@ -45,7 +45,7 @@ let alertController = Alert(title: "Deletion", message: "Are you sure?") {
 present(alertController, animated: true)
 {% endhighlight %}
 
-# Function Builders
+## Function Builders
 
 This new feature introduced in Swift 5.1 is not fully implemented yet. Instead of the public `@functionBuilder` annotation, you have to use the private `@_functionBuilder` one. Though, you can find the details of the proposal [here](https://github.com/apple/swift-evolution/blob/9992cf3c11c2d5e0ea20bee98657d93902d5b174/proposals/XXXX-function-builders.md#function-building-methods).
 
@@ -63,7 +63,7 @@ The [documentation](https://github.com/apple/swift-evolution/blob/9992cf3c11c2d5
 
 The `buildExpression`, `buildDo` and `buildFunction` have no effect for the moment.
 
-# In practice
+## In practice
 
 What we want to build in our case is a list of *alert actions*. An `Action` is composed of a title, a style (`default`, `destructive` or `cancel`) and a function, triggered when the user taps the alert button on screen.
 
@@ -210,7 +210,7 @@ let alertController = Alert(title: "Deletion", message: "Are you sure?") {
 }
 {% endhighlight %}
 
-# Conditions
+## Conditions
 
 We can now add multiple actions to the same alert. But that's not very dynamic yet...
 
@@ -299,7 +299,7 @@ struct ActionBuilder {
 
 And that makes our code compiling again with `if` / `else` conditions.
 
-# Loops
+## Loops
 
 At the moment we have no way to loop an array of strings and create actions out of them.
 
@@ -339,7 +339,7 @@ let alertController = Alert(title: "Title", message: "Message") {
 }
 {% endhighlight %}
 
-# Conclusion
+## Conclusion
 
 We saw how we could improve the `UIAlertController` API with very little code. The difficulty with function builders is to find [documentation](https://forums.swift.org/t/function-builders/25167/357) and to understand the cryptic error messages. The feature is really limited at the moment and maybe it's for the best, to avoid overly complicated DSLs that would not be understandable. But be patient, swift folks are [working on it](https://forums.swift.org/t/function-builders-implementation-progress/32981).
 

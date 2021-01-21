@@ -10,7 +10,7 @@ But we all know that humans make mistakes, so in this article, we'll cover how t
 
 *Note*: If you want to know more about the different kinds of licenses, go check [https://choosealicense.com/](https://choosealicense.com/).
 
-# Listing the licenses
+## Listing the licenses
 
 First of all, if you want to quickly see the state of the licenses in your project, I created a gem called [ADLicenselint](https://github.com/faberNovel/ad_licenselint/) that lists the licenses for each pod in your Podfile.
 
@@ -55,7 +55,7 @@ Here is an example of one entry in the plist for the pod `Alamofire`:
 
 The gem simply parses this file and extracts the informations for each pod. By default, the licenses automatically validated are `MIT`, `Apache`, `Apache 2.0` and `BSD`. Every license that is not included in this list will be considered unsafe.
 
-# Using it with fastlane
+## Using it with fastlane
 
 Along with the gem, you can find a [fastlane plugin](https://github.com/faberNovel/ad_licenselint/tree/master/fastlane-plugin-ad_licenselint) that can be used in your Fastfile.
 
@@ -102,11 +102,11 @@ The `summary` is a string and can be printed as is, whereas the `report` hash ha
 }
 {% endhighlight %}
 
-# Automation
+## Automation
 
 Once we have access to the license linter in our lanes, we can imagine some nice use cases.
 
-## Pull request comment
+### Pull request comment
 
 Let's say you want to post an automatic message to your pull request if you detect that a pod with a commercial license has been used.
 
@@ -156,7 +156,7 @@ changes = lockfile.detect_changes_with_podfile(podfile)
 updated_pods = changes[:added] + changes[:changed]
 {% endhighlight %}
 
-## Pull request review
+### Pull request review
 
 You could also imagine posting a review directly to the Podfile in the pull request.
 

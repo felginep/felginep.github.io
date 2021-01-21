@@ -8,7 +8,7 @@ This article was first published on Fabernovel [blog](https://en.fabernovel.com/
 
 On Friday, January 27th was the dotSwift event, a set of conferences for Swift developers in Paris. Three of our Applidium iOS engineers attended and here are their feedbacks.
 
-# The event
+## The event
 
 The event took place in the Théâtre des Variétés, in the center of Paris. Good iOS related conferences are not used to be located in Paris so we were delighted to enjoy this event in such a peculiar location.
 
@@ -18,7 +18,7 @@ The middle session was more focused on lightning talks, i.e. small talks of abou
 
 The speakers had different backgrounds: there were engineers from well-known companies such as Realm, IBM or Microsoft, others were independent developers and we have also seen some involved in the Swift open source project. Daniel Steinberg was the MC, in charge of introducing the talks and asking questions to the speakers afterwards.
 
-# The content
+## The content
 
 Talks were not all of the same level. Some were for Swift beginners, others for more experienced developers. But this is a good thing: everyone should learn something by attending the event.
 
@@ -32,7 +32,7 @@ One talk was focused on [RxSwift](https://speakerdeck.com/icanzilb/rxswift-on-io
 
 Last but not least, a couple of talks were focused on the server side of Swift. Ian Partridge, IBM engineer, was there to [talk](https://speakerdeck.com/ianpartridge/beyond-mobile) about it. Swift can run on Linux, but there are some pain points: for example some features of Foundation are not implemented yet.
 
-# What we thought
+## What we thought
 
 Attending the dotSwift, we found out that traditional and simple subjects about Swift itself are not treated anymore. Instead, the talks presented some edge cases from real life projects (API design, [Bluetooth communication](https://speakerdeck.com/huguesbr/iot-and-ios-lessons-learned), etc), or new usages and new frameworks (RxSwift, swift on the server).
 
@@ -48,7 +48,7 @@ We are skeptical about those arguments because there are some drawbacks as well.
 
 In any case, we will see in the future what will happen, but for now we think it is too early to consider using those new server-side frameworks in production.
 
-# Silver bullets
+## Silver bullets
 
 Here is a special mention to the talk of Roy Marmelstein. It was really engaging and we all agreed with him.
 
@@ -69,7 +69,7 @@ RxSwift is attractive and simplifies the data flow, but the learning curve is pr
 Swift itself can be seen as a _silver bullet_ as well, because the language is still in early development and suffers from ABI compatibility or long compilation times. There are cases where Objective-C is still the right choice.
 What we can learn from this talk, and from the event itself is that all these new tools that were presented to us are really powerful and can really help improve our code. But each one is useful in a particular context and comes with drawbacks that needs to be acknowledged and understood before using it everywhere.
 
-# Conclusion
+## Conclusion
 
 We all agree the event was a success and the conferences were interesting. At Applidium we use Swift daily in our projects, so we did not learn anything groundbreaking, but it is always nice to come back to the office the next Monday with new ideas and new patterns to try.
 

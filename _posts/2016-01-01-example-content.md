@@ -7,7 +7,7 @@ published: false
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt ornare nibh, non elementum augue tempus eget. Pellentesque tempus scelerisque iaculis. Nullam interdum ultricies nibh quis sollicitudin. Donec ornare fermentum facilisis. Ut at sem ac sem imperdiet varius a eget tortor. Nam eu augue eget orci semper maximus in eget augue. Mauris ornare, nisl ut suscipit consectetur, mi quam interdum tellus, at rutrum quam eros ultrices mi.
 
-# Headers
+## Headers
 {% highlight markdown %}
 # H1
 ## H2
@@ -24,7 +24,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt orna
 ##### H5
 ###### H6
 
-# Text formatting
+## Text formatting
 {% highlight markdown %}
 - **Bold**
 - _Italics_
@@ -45,7 +45,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt orna
 - Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr>
 - Citation: <cite>&mdash; Chester How</cite>
 
-# Lists
+## Lists
 {% highlight markdown %}
 1. Ordered list item 1
 2. Ordered list item 2
@@ -64,14 +64,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt orna
 * Unordered list item 2
 * Unordered list item 3
 
-# Links
+## Links
 {% highlight markdown %}
 Check out tale on [GitHub](https://github.com/chesterhow/tale).
 {% endhighlight %}
 
 Check out tale on [GitHub](https://github.com/chesterhow/tale).
 
-# Images
+## Images
 {% highlight markdown %}
 ![placeholder](https://placehold.it/800x400 "Large example image")
 ![placeholder](https://placehold.it/400x200 "Medium example image")
@@ -82,7 +82,7 @@ Check out tale on [GitHub](https://github.com/chesterhow/tale).
 ![placeholder](https://placehold.it/400x200 "Medium example image")
 ![placeholder](https://placehold.it/200x200 "Small example image")
 
-# Code and Syntax Highlighting
+## Code and Syntax Highlighting
 Use back-ticks for `inline code`. Multi-line code snippets are supported too through Pygments.
 
 {% highlight js %}
@@ -105,7 +105,7 @@ var s = "JavaScript syntax highlighting";
 alert(s);
 {% endhighlight %}
 
-# Blockquotes
+## Blockquotes
 {% highlight markdown %}
 > Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
@@ -113,7 +113,7 @@ alert(s);
 
 > Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
-# Horizontal Rule & Line Break
+## Horizontal Rule & Line Break
 {% highlight markdown %}
 Use `<hr>` for horizontal rules
 

@@ -13,7 +13,7 @@ Today we will quickly cover the basics of using Swinject in your app in order to
 
 Let's dive in.
 
-# The basics
+## The basics
 
 *Note*: I invite you to read the detailed [documentation](https://github.com/Swinject/Swinject/tree/master/Documentation) if you want to fully understand what follows.
 
@@ -129,7 +129,7 @@ class DependencyProvider {
 {% endhighlight %}
 
 
-# Custom object scopes
+## Custom object scopes
 
 We have seen earlier that we have a `LastViewedProductsRepository` object, responsible for keeping a cache of the last viewed products in the app.
 
@@ -190,7 +190,7 @@ func userDidLogout() {
 
 Now the next time a user logs in, all the last viewed products will be cleared.
 
-# Domain specific assemblies
+## Domain specific assemblies
 
 In some cases, there are parts of your application that you can access only if some values are downloaded, or set somewhere else in the app. In our case, let's imagine there is a configuration file downloaded when the user logs in and that this configuration is used intensively in the rest of the app.
 
@@ -330,7 +330,7 @@ class LastViewedProductsPresenterImplementation: LastViewedProductsPresenter {
 
 {% endhighlight %}
 
-# Wrap up
+## Wrap up
 
 Dependency injection is a major concept in programming in order to make your code reusable and testable. The concepts explained in this blog post can apply independently of the framework and the platform.
 

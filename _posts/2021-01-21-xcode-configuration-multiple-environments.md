@@ -8,7 +8,7 @@ I recently stumbled upon yet another article that explains different techniques 
 
 Let's see what the proposed solutions are, the issues associated with them and how we can do better.
 
-# The (not so) recommended setup
+## The (not so) recommended setup
 
 The root of the problem is to be able to handle multiple development environments for an Xcode project. For each environment we want to define dynamic environment variables, such as server url, logging, feature flagging, etc. And each environment should be compiled in two modes: `Debug` (for local development, or to run tests) and `Release` (to distribute on the stores).
 
@@ -32,7 +32,7 @@ Once we have these build configurations, we need to store the environment variab
 - to use `.xcconfig` files for each build configuration (with the issue of [escaping characters](https://stackoverflow.com/q/21317844))
 - to store values directly in Xcode build settings for each configuration (with User Defined settings)
 
-# The drawbacks
+## The drawbacks
 
 There are a few drawbacks with the previous approach.
 
@@ -42,7 +42,7 @@ In practice, for each new environment we want to add, we have to create a `Debug
 
 What's more, the second issue is that we will find ourselves duplicating a lot of build settings between all these configurations. For instance, both DevelopmentDebug and ProductionDebug will share the same build settings associated with compilation. There is no reason these settings should diverge between Development and Production.
 
-# Another approach
+## Another approach
 
 We saw earlier that it's a bad practice to mix compilation build settings and development environment.
 
@@ -79,7 +79,7 @@ The script will read the `env.development.yml` and do two things:
 - integrate the environment build settings values (under the `pbxproj` key) into Xcode
 - generate a Swift file that represents our environment variables (under the `env` key)
 
-## Updating the pbxproj
+### Updating the pbxproj
 
 To integrate the environment build settings into our project, the script will copy the values from the yaml to an xcconfig file named `Environment.xcconfig`. This file is auto generated so we can add it to the `.gitignore`.
 
@@ -136,7 +136,7 @@ To recap what we just did here:
 
 If we run the script for another environment, only the values contained in `Environment.xcconfig` will change, and they will be automatically loaded by Xcode.
 
-## Environment variables
+### Environment variables
 
 The final step of our solution is to handle the environment variables that will be used at runtime. The idea here is to define an `Environment` struct that will hold the values from our yaml:
 
@@ -169,7 +169,7 @@ In the code, we now can use the `Enviroment.current` value wherever we want. We 
 
 The real power here is that the environment is a first class citizen in our app and values are verified at **compile time**. If we forget to add a key in a yaml file, or if the key has the wrong type, we will get an error during compilation.
 
-# In practice
+## In practice
 
 So how does it work in practice?
 

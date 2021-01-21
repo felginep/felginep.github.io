@@ -10,7 +10,7 @@ UIKit comes with a number of built in ways to perform these actions but there is
 
 Let's see with a few examples how we could hide this logic into more abstract types and simplify the calling site.
 
-# Mail
+## Mail
 
 Let's say we want to display the user a mail compose sheet. Thanks to the documentation, the right class to use is `MFMailComposeViewController`.
 
@@ -131,7 +131,7 @@ class DebugMailIntent: MailIntent {
 }
 {% endhighlight %}
 
-# Map
+## Map
 
 We can apply the same technique for opening map items into Maps application and hide the import of the `MapKit` framework.
 
@@ -192,7 +192,7 @@ class GoogleMapIntent: MapIntent {
 }
 {% endhighlight %}
 
-# Phone Call
+## Phone Call
 
 Even if there is no framework to hide in this case, the naming of the intent makes things very convenient to use.
 
@@ -229,7 +229,7 @@ class NativePhoneIntent: PhoneIntent {
 
 In this case we directly call the provided number, but we could imagine passing a view controller to the native intent, and display an alert before calling.
 
-# Conclusion
+## Conclusion
 
 This simple technique allows two things:
 - hide the implementation details of the intent (import of frameworks) and keep things simple in the caller site

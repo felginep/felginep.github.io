@@ -7,7 +7,7 @@ author: "Pierre Felgines"
 Have you ever had the feeling that your `NSAttributedString` were not in the right place in your code? That you were mixing view details and data logic?
 It happened to me recently and I want to propose a solution that focus separately on the **semantics** and on the **visual representation** of an attributed string.
 
-# The Problem
+## The Problem
 
 Apple defines an `NSAttributedString` as
 > A string that has associated attributes (such as visual style, hyperlinks, or accessibility data) for portions of its text.
@@ -107,7 +107,7 @@ This works pretty well, but a detail was bothering me. I do not want to set up t
 
 But at the same time, the mapper needs to know how to format the data, and in our case, which part of the username is highlighted. And I don't want my view to know about the mapping operation. The view is dumb and should only display whatever data we pass in.
 
-# The solution
+## The solution
 
 The solution is to split the concerns. We need to create **semantic styles**. These styles will be used on the attributed string in the mapper. Then the view will associate a style to visual attributes (color, font, etc.). This way the mapper only knows about the semantics, and the view about the display. It's the same idea behind HTML and CSS, the html should be a bunch of semantic data and CSS a list of rules to style the data.
 
@@ -191,7 +191,7 @@ class UserTableViewCell: UITableViewCell {
 
 If you wonder, the `styler` is rather simple. It just enumerates all the attributes and replace the `semanticStyle` occurrences with registered attributes for the current style. You can find the implementation on my [Github repository](https://github.com/felginep/AttributedStringStyle).
 
-# Final note
+## Final note
 
 Now the code feels right and the concerns are respected. For sure, it adds a layer of complexity, but it clearly separates the view and the mapping logic. On one side we focus on the semantics, on the other side on the display.
 That means the mapper does not have to evolve if the design change in the future. Conversely, the view will not change its attributes if the backing data is updated (for instance, if we modify the highlighting feature).

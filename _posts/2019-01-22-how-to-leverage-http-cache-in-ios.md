@@ -10,7 +10,7 @@ One of the most difficult subject in programming is caching because there is no 
 
 In this article I want to focus on how we achieved basic caching in most of our screens by leveraging HTTP cache. The goal was to provide content to the user even if there is no internet connection, in the easiest way possible. The idea is rather simple: for all `GET` requests, we cache the response that we get. Then, if there is no connection, we fetch the previous response from the cache and display a warning message to the user, informing the data may be outdated.
 
-# Caching the data
+## Caching the data
 
 The core idea is to cache all the responses we receive.
 This can be done with the method `urlSession(_:dataTask:willCacheResponse:completionHandler:)` of `URLSessionDataDelegate`.
@@ -58,7 +58,7 @@ Note that we save the current date along with the response. We will use it later
 
 You may wonder what the `whipeAuthenticationHeaders` method is doing here. If we save the response as is, when we get back the cached response from the local cache, the potential authentication headers would be outdated and would cause the next requests to fail because the token is expired. That’s why we remove all authentication headers before caching the response. That way they won’t be used by the application. This is ad hoc for our authentication method, but just be aware that kind of problem can happen.
 
-# Fetching the cached data
+## Fetching the cached data
 
 The mechanism to fetch the cached response is contained in a *behavior*. A behavior is an object that can execute code at various times of a request life. It’s not the topic of this article, but you can learn more [here](http://khanlou.com/2017/01/request-behaviors/).
 Just remember that in our case we want to modify the response when the network call fails, and return the cached data instead of an error.
@@ -117,7 +117,7 @@ class LoadFromCacheIfUnreachableBehavior: RequestBehavior {
 
 In simple terms, when we hit the network and get an error due to unreachable service (meaning an error from `URLSession`), we then ask the cached response for the current url request and return it.
 
-# The display
+## The display
 
 In the rest of the app, the objects responsible to fetch data, called *repositories*, have method signatures like this one:
 
@@ -161,7 +161,7 @@ When the network request fails, the result looks like this. An information bar i
             caption="Image 1. Information bar displayed to the user"
             max-width="432px" %}
 
-# Conclusion
+## Conclusion
 
 We have seen how to create a local cache system based only on HTTP cache. This implementation only works for `GET` requests, of course, and it’s very far from an offline experience, but the users will see some content even if they have no network connection. This is already a good start and a nice improvement compared to just displaying an error.
 

@@ -6,7 +6,7 @@ author: "Pierre Felgines"
 
 Today I want to talk about `UIView` styling. The common approach when we want to customize the display of native UI controls (for instance `UIButton` or `UILabel`) is to create a subclass that overrides a bunch of properties. That works well most of the time, but some problems may arise.
 
-# The filled and rounded button
+## The filled and rounded button
 
 We you use subclasses in Swift to style your views, you loose composition. For example, if you create two `UIButton` subclasses, `FilledButton` and `RoundedButton`, how do you create a button that is both filled and rounded ?
 
@@ -77,7 +77,7 @@ What was previously impossible with `UIButton` subclasses is now very straightfo
             title="Image 2. Filled and rounded button"
             caption="Image 2. Filled and rounded button" %}
 
-# Improvements
+## Improvements
 
 Now that we get the general idea, it's time for syntactic sugar!
 
@@ -123,7 +123,7 @@ func style<T>(_ object: T, with style: ViewStyle<T>) {
 style(button, with: .roundedAndFilled)
 {% endhighlight %}
 
-# Protocols to the rescue
+## Protocols to the rescue
 
 The code looks good and is readable. But we can go one step further! I want to get rid of the global `style(_:with:)` function, and to use an instance method of `UIButton` instead. For this, let's define an empty protocol `Stylable`, and make `UIView` conform to it. That way we will be able to add methods to `Stylable` and all the `UIView` subclasses will get them for free.
 
@@ -159,7 +159,7 @@ button.apply(labelStyle) // 💣
 // error: cannot convert value of type 'ViewStyle<UILabel>' to expected argument type 'ViewStyle<UIButton>'
 {% endhighlight %}
 
-# Init with style
+## Init with style
 
 With the previous `apply(_:)` method you will often find yourself writing these two lines:
 
@@ -198,7 +198,7 @@ We can now use the following syntax:
 let button = UIButton(style: .roundedAndFilled) // 👌
 {% endhighlight %}
 
-# Conclusion
+## Conclusion
 
 With view styles as plain Swift functions, we achieved two things:
 - first, a technical improvement on view subclasses: the composition of two `UIView` subclasses was impossible, whereas it becomes very easy using Swift functions.

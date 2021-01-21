@@ -10,7 +10,7 @@ I use them to validate that my library is compiling, that all the tests pass, th
 
 Let's see what are the simple steps you need to do.
 
-# Creating the pod
+## Creating the pod
 
 To create a new pod you just have to run `pod lib create MyAwesomePod`. This will bootstrap a new project, with directories and placeholder classes.
 
@@ -41,7 +41,7 @@ end
 
 Now, you can run your unit tests with a simple command: `bundle exec fastlane tests`.
 
-# Linting source files
+## Linting source files
 
 If you plan to allow other people to maintain your codebase, you may want to enforce some coding style rules. This can be easily done with [Swiftlint](https://github.com/realm/SwiftLint){:target="_blank"}.
 
@@ -91,7 +91,7 @@ lane :lint do
 end
 {% endhighlight %}
 
-# Github Actions
+## Github Actions
 
 Now that we laid the groundwork, we can add the Github workflow.
 
@@ -132,7 +132,7 @@ Each time you push on the repository, the workflow will:
 - check the coding style
 - validate the pod with `pod lib lint`
 
-# Conclusion
+## Conclusion
 
 We saw how easy it was to set up Github Actions with fastlane. With this simple workflow you can be confident that all those checks will run every time you or other contributors push to the repository.
 

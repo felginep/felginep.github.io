@@ -10,7 +10,7 @@ Note that the implementation is far from production ready and should not be used
 
 *Note*: To make this tutorial a little more interesting, I chose to do it in TDD. We will write tests first and make them pass one by one.
 
-# Our first test
+## Our first test
 
 Let's write our first test.
 
@@ -70,7 +70,7 @@ This makes our first test pass! We have almost nothing for now, but be patient, 
 
 We can comment this test out as the implementation of `Promise` will change a bit in the future.
 
-# The bare minimum
+## The bare minimum
 
 Our second test is the following:
 
@@ -414,7 +414,7 @@ Congratulations! We have created the base of our `Promise` class. You can alread
 
 In the next sections we will create overloads of `then` in order to return new promises or new values along the way.
 
-# Chaining Promises
+## Chaining Promises
 
 Our `Promise` implementation would not be complete if we can't chain multiple promises.
 
@@ -528,7 +528,7 @@ And finally, the test pass.
 • Test 3. Resolution handlers can be chained passed (1 assertions)
 {% endhighlight %}
 
-# Chaining values
+## Chaining values
 
 If you can implement `flatMap` on a type, you can implement `map` on this same type using `flatMap`. What does `map` looks like for our `Promise` ?
 
@@ -623,7 +623,7 @@ func then<NewValue>(onResolved: @escaping (Value) -> NewValue) -> Promise<NewVal
 }
 {% endhighlight %}
 
-# Example of use
+## Example of use
 
 We will stop here for the implementation. Our `Promise` class is complete enough to demonstrate what we can do with it.
 
@@ -664,7 +664,7 @@ fetchIds()
 
 The code becomes highly readable, flat and concise!
 
-# Conclusion
+## Conclusion
 
 That's the end of this article, I hope you liked it.
 

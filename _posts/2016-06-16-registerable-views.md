@@ -16,7 +16,7 @@ As we start to embrace Swift in our daily work at Applidium, I would like to sha
 
 This is a swifty API to register and dequeue reusable cells (think `UITableViewCell` and `UICollectionViewCell`).
 
-# Either a Class or a Nib
+## Either a Class or a Nib
 
 As we all know, a reusable cell is created either from a Nib or from a Class. We can represent this two cases with an enum.
 
@@ -90,7 +90,7 @@ extension RegisterableView {
 
 That’s all we need to do with `RegisterableView`. Let’s now see how to register them!
 
-# A generic approach
+## A generic approach
 
 The APIs to register cells from `UITableView` and `UICollectionView` are very close but not identical and we want a generic one that we can use for both.
 
@@ -180,7 +180,7 @@ extension UICollectionView : CollectionView {
 }
 {% endhighlight %}
 
-# Results
+## Results
 
 With this new API, we are able to transform this ugly snippet:
 
@@ -200,7 +200,7 @@ tableView.register(cells: [
 
 A nice improvement based on an enum and a protocol!
 
-# Some thoughts about the dequeue
+## Some thoughts about the dequeue
 
 The dequeue works as usual, except that we need to use the static identifier method from `ClassIdentifiable`.
 
@@ -229,7 +229,7 @@ let cell = tableView.dequeueCell(at: indexPath) as MyTableViewCell
 
 The type of the cell, and thus the identifier is infered by the compiler. We do not need the identifier nor the cast at the end anymore.
 
-# Conclusion
+## Conclusion
 
 Swift has powerful features such as enums, protocol extensions and strong type system that we can leverage to create new APIs.
 
